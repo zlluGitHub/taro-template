@@ -1,0 +1,55 @@
+.index{
+    .warp{
+        padding: 26px;
+        margin: 30px;
+        background-color: #fff;
+        border-radius: 8px;
+        .top{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 42px;
+            .time{
+                font-size: 32px;
+                text-align: center;
+            }
+            .img{
+                width: 100px;
+                height: 100px;
+                margin-top: 24px;
+                margin-bottom: 40px;
+                border-radius: 100%;
+            }
+            .title{
+                margin-bottom: 20px;
+                text-align: center;
+                font-size: 32px;
+            }
+        }
+        .content{
+            .an-box{
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 2px dashed #eee;
+                padding: 20px 0;
+            }
+        }
+        .button{
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+            margin-top: 30px;
+            .bt-1,.bt-2{
+                font-size: 30px;
+                padding: 0px 110px;
+            }
+        }
+        .tip{
+            margin: 20px 0;
+        }
+    }
+    .at-switch{
+        padding: 0;
+    }
+   
+}

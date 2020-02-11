@@ -1,0 +1,63 @@
+.index{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+.bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+.menu {
+    position: fixed;
+    bottom: 120px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    .warp-me{
+       background:#FE648A;
+       color: #fff;
+       display: flex;
+       align-items: center;
+       border-radius: 100%;
+       padding: 10px;
+       margin-right: 80px;
+       box-shadow: 0rpx 0rpx 20rpx 3rpx #FD78A2;
+       .icon-add{
+         width: 55px;
+         height: 55px;
+         background: url('./static/img/add.png') center center no-repeat;
+         background-size: cover;
+       }
+       .menu-add{
+           font-size: 30px;
+       }
+    }
+}   
+.button{
+    margin: 25px;
+    button{
+        background:linear-gradient(to right,#FD78A2 0%,#F75172 100%);
+        box-shadow: 0rpx 0rpx 20rpx 3rpx #FD78A2;
+        font-size: 34px;
+        border-radius: 50px;
+        padding: 6px 0;
+        // margin: 25px;
+        margin-top: 65px;
+    }
+}
+// @font-face {
+//     font-family: "华文行楷";
+//     src: url("./static/fonts/华文行楷.woff2") format("woff2"),
+//          url("./static/fonts/华文行楷.woff") format("woff"),
+//          url("./static/fonts/华文行楷.ttf") format("truetype"),
+//          url("./static/fonts/华文行楷.eot") format("embedded-opentype"),
+//          url("./static/fonts/华文行楷.svg") format("svg"),
+//          url("./static/fonts/华文行楷.otf") format("opentype");
+// } #F7F8FA

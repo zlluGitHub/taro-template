@@ -23,7 +23,7 @@ import { formatTime } from '../utils/common'
 //   console.error(time, name, action, info, device)
 // }
 
-
+export const URL = base
 
 export const baseOptions = (params, method = 'GET') => {
   let { url, data } = params

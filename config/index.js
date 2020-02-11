@@ -68,6 +68,7 @@ const config = {
         }
       }
     },
+    esnextModules: ['taro-ui'],
     devServer: {
       host: 'localhost',
       port: 10086,

@@ -2,4 +2,5 @@
 // export base = "http://api.shudong.wang/v1/"
 
 export const token = ''
-export const base = ""
+// export const base = 'http://zhenglinglu.cn' 
+export const base = 'http://localhost:3000'   

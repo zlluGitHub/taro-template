@@ -37,12 +37,20 @@
     "@tarojs/taro-h5": "2.0.1",
     "@tarojs/taro-qq": "2.0.1",
     "@tarojs/taro-quickapp": "2.0.1",
+    "@tarojs/taro-rn": "^2.0.1",
     "@tarojs/taro-swan": "2.0.1",
     "@tarojs/taro-tt": "2.0.1",
     "@tarojs/taro-weapp": "2.0.1",
-    "@tarojs/taro-rn": "2.0.1",
+    "nerv-devtools": "^1.5.5",
     "nervjs": "^1.5.5",
-    "nerv-devtools": "^1.5.5"
+    "taro-ui": "^2.2.4",
+    "@tarojs/components-rn": "^2.0.1",
+    "@tarojs/taro-router-rn": "^2.0.1",
+    "@tarojs/taro-redux-rn": "^2.0.1",
+    "react": "16.8.0",
+    "react-native": "0.59.9",
+    "redux": "^4.0.0",
+    "tslib": "^1.8.0"
   },
   "devDependencies": {
     "@types/react": "^16.4.6",

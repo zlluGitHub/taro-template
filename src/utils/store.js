@@ -2,7 +2,9 @@
 /**
  * 全局变量
  */
-const globalData = {}
+const globalData = {
+    user: {name:'zll',url:'http://zhenglinglu.cn/_nuxt/img/ff5a451.jpg'}
+}
 export const setData = (key, val) => {
     globalData[key] = val
 }

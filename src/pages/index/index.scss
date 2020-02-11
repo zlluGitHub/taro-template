@@ -1,0 +1,157 @@
+.index{
+    // position: fixed;
+    // height: 100%;
+    // width: 100%;
+    // background: url("../../static/img/bgc.jpg") center center no-repeat;
+    // background-size: cover;
+    // font-family:Georgia; font-family:Arial;
+
+    .top{
+        padding: 40px;
+        display: flex;
+        color: #fff;
+        .touxiang{
+            position: relative;
+            // width: 200px;
+            display: flex;
+            .img{
+                width: 100px;
+                height: 100px;
+                border: 6px solid #fff;
+                border-radius: 100%;
+                box-shadow: 3px 3px 30px #888;
+            }
+            .img-love{
+                position: absolute;
+                width: 60px;
+                height: 60px;
+                bottom: -20px;
+                left: 82px;
+            }
+        }
+        .i-title{
+            margin-left: 20px;
+            .title-top{
+                font-size: 32px;
+                margin-bottom: 4px;
+                margin-top: 12px;
+            }
+            .title-bottom{
+                font-size: 22px;
+            }
+        }
+        .i-day{
+            font-size: 30px;
+            font-weight: 600;
+            margin: 0 12px;
+            color: #F98C9F;
+        }
+      
+    }
+    .bg{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+    }
+    .i-love{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+        display: flex;
+        justify-content: center;
+        margin-top: 350px;
+        .img{
+            height: 230px;
+            width: 230px;
+            position: relative;
+            // box-shadow: 0 0 20px 10px #F9569C;
+        }
+       
+    }
+    
+    .i-warp{
+        position: relative;
+        animation: wave 2s ease-out infinite;
+        .center-text{
+            position: absolute;
+            top: 7%;
+            left: 30%;
+            font-size: 40px;
+            color:#fff;
+            font-weight: 600;
+        }
+        @keyframes wave {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                // opacity: 0;
+                transform: scale(1);
+            }
+        }
+    }
+    .i-ul{
+        position: absolute;
+        width: 100%;
+        display: flex;
+        bottom: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+        .i-li{
+            padding: 40px;
+            border-radius: 10Px;
+            margin: 30px;
+            margin-top: 0;
+            background:#44ea76;
+            background:linear-gradient(to top,#fa6c9f 0%,#ffe140 80%,#ffe140 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            .ic-photo{
+                display: block;
+                width: 80px;
+                height: 80px;
+                background: url('../../static/img/xc.png') center center no-repeat;
+                background-size: 100%;
+            }
+            .ic-list{
+                display: block;
+                width: 80px;
+                height: 80px;
+                background: url('../../static/img/ywd1.png') center center no-repeat;
+                background-size: 100%;
+            }
+            .ic-day{
+                display: block;
+                width: 80px;
+                height: 80px;
+                background: url('../../static/img/jnr.png') center center no-repeat;
+                background-size: 100%;
+            }
+            .center-text{
+                margin-top: 20px;
+                font-size: 28px;
+            }
+        }
+        .bgc1{
+            background:linear-gradient(to top,#FD4E71,#FF7BA7);
+        }
+        .bgc3{
+            background:linear-gradient(to top,#F37252,#FFA260);
+        }
+    }
+}

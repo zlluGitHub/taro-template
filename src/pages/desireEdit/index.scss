@@ -1,0 +1,26 @@
+.index{
+    .title{
+        padding: 20px;
+        font-size: 60px;
+        font-weight: 600;
+    }
+    .content{
+        padding: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        .item{
+            margin: 5px;
+            width: 18.2%;
+            min-height: 120px;
+            font-size: 20px;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .text{
+                padding: 0 18px;
+                text-align: center;
+            }
+        }
+    }
+}

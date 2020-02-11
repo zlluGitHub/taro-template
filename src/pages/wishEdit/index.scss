@@ -1,0 +1,36 @@
+.index{
+    .warp{
+        margin-top: 200px;
+        .title{
+            padding: 20px;
+            font-size: 60px;
+            font-weight: 600;
+        }
+        .content{ 
+            display: flex;
+            justify-content: center;
+            .img-box{
+                border-radius: 8px;
+                background-color: #fff;
+                .img{
+                    margin: 20px;
+                    width: 550px;
+                    height: 600px;
+                }
+            }
+        }
+        .title{
+            text-align: center;
+            font-size: 35px;
+            background-color: #fff;
+            padding-bottom: 45px;
+        }
+        .time{
+            font-size: 30px;
+            text-align: center;
+            padding: 20px;
+            background-color: #eee;
+        }
+    }
+   
+}
