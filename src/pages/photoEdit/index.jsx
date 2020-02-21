@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image, Icon, Button } from '@tarojs/components'
-import { AtImagePicker, AtButton, AtToast, AtMessage } from 'taro-ui'
+import { AtImagePicker, AtNavBar, AtToast, AtMessage } from 'taro-ui'
 import { URL } from '../../service/api'
 import { getData } from '../../utils/store'
 import './index.scss'
@@ -12,15 +12,13 @@ export default class Index extends Component {
       isLoading: false,
       value: '',
       bid: '',
-      files: [
-        // { url: 'http://zhenglinglu.cn/_nuxt/img/ff5a451.jpg' }
-      ]
+      files: []
     }
   }
   /************页面配置部分***************/
-  // config = {
-  //   navigationBarTitleText: '首页'
-  // }
+  config = {
+    navigationBarTitleText: '上传照片'
+  }
 
   /************生命周期函数部分***************/
   componentWillMount() {
@@ -28,7 +26,6 @@ export default class Index extends Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount');
     let _this = this
     Taro.chooseImage({
       count: 36,
@@ -50,7 +47,9 @@ export default class Index extends Component {
   }
 
   componentWillUnmount() {
-    console.log('componentWillUnmount');
+    Taro.navigateTo({
+      url: '/pages/phono/index'
+    })
   }
 
   componentDidShow() {
@@ -81,7 +80,7 @@ export default class Index extends Component {
   uploadFile() {
     let files = this.state.files
     if (files.length !== 0) {
-      let user = getData('user')
+      let user = getData('user').login
       let count = 0
       this.setState({ isLoading: true })
       files.forEach((item, i) => {
@@ -91,8 +90,9 @@ export default class Index extends Component {
           name: 'file',
           formData: {
             bid: getData('bid'),
-            author: user.name,
-            url: user.url
+            author: user.author,
+            url: user.url,
+            loveCode: getData('user').login.loveCode
           },
           success: res => {
             count = count + 1
@@ -118,16 +118,36 @@ export default class Index extends Component {
 
     // }, 500)
   }
+  beforePage() {
+    Taro.navigateBack({
+      delta: 1 // 返回上一级页面。
+    });
+  }
   /************视图部分***************/
   render() {
     let files = this.state.files;
     let isLoading = this.state.isLoading;
+    let navBar = null
+    if (Taro.getEnv() == Taro.ENV_TYPE.WEB) {
+      navBar = <AtNavBar
+        onClickRgIconSt={this.beforePage.bind(this)}
+        onClickRgIconNd={this.beforePage.bind(this)}
+        onClickLeftIcon={this.beforePage.bind(this)}
+        color='#000'
+        leftText='返回'
+        leftIconType='chevron-left'
+      >
+        <View>照片上传</View>
+      </AtNavBar>
+    }
     return (
       <View className='index'>
-        <View className='warp'>
+        {navBar}
+        <View className='warp2'>
           <AtImagePicker
             mode='aspectFit'
             multiple
+            count={12}
             files={files}
             onChange={this.onChange.bind(this)}
             onFail={this.onFail.bind(this)}
@@ -140,7 +160,7 @@ export default class Index extends Component {
         </View>
         <AtMessage />
         {/* 背景 */}
-        {/* <Image className="bg" src={require('../../static/img/bgc.jpg')}></Image> */}
+        <Image className="bg" src={getData("bgcData") ? URL + getData("bgcData")[3].src : URL + '/love/bgc/bgc4.jpg'}></Image>
       </View>
     )
   }

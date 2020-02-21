@@ -1,4 +1,4 @@
-.index{
+.index2{
     .title{
         padding: 20px;
         font-size: 60px;
@@ -9,26 +9,45 @@
         display: flex;
         flex-wrap: wrap;
         .item{
-            margin: 7px;
-            width: 18.2%;
-            min-height: 120px;
-            font-size: 20px;
-            background-color: #fff;
+            margin: 14px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            // align-items: center;
             position: relative;
-            border-radius: 6px;
             .text{
-                padding: 0 18px;
+                color: #fff;
+                font-size: 22px;
                 text-align: center;
+                z-index: 5;
+                padding: 20px;
+                margin-top: -16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
             }
             .img{
                 position: absolute;
-                width: 78%;
-                height: 70%;
-                z-index: 5;
+                display: block;
+                width: 100%;
+                height: 100%;
+                opacity: 0.9;
+                // z-index: 5;
             }
         }
+    }
+    .at-input{
+        margin-left:0;
+        // border-bottom: 1px solid #eee;
+    }
+    .at-input__input{
+        padding-right:0;
+    }
+}
+page .item{
+    width: 155px;
+    height: 155px;
+    .img{
+        top: auto;
     }
 }

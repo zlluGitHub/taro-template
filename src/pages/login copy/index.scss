@@ -1,0 +1,57 @@
+.indexl{
+    image{
+        width: 100%;
+    }
+    .login{
+        position: absolute;
+        top: 30%;
+        right: 20%;
+        left: 20%;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 26px;
+        border-radius: 12px;
+        z-index: 1000;
+    }
+    .at-input{
+        margin: 0;
+    }
+    .at-input__title{
+        width: 100px;
+        font-size: 28px;
+        color: #E795B0;
+    }
+    .at-input{
+        background: transparent;
+    }
+    .at-button{
+        margin-top: 100px;
+    }
+    .at-button__wxbutton{
+        font-size: 25px;
+    }
+    .at-button--secondary{
+        color: #E795B0;
+        border: 1PX solid #E795B0;
+        background-color: transparent;
+        border-radius: 50px;
+    }
+    .at-button--small{
+        margin: 30px;
+        margin-top: 60px;
+    }
+    .at-loading__ring{
+        border-color:#E795B0 transparent transparent transparent;
+    }
+    .weui-input::-webkit-input-placeholder {
+        font-size: 28px;
+    }
+    .weui-input:-moz-placeholder {
+        font-size: 28px;
+    }
+    .weui-input::-moz-placeholder {
+        font-size: 28px;
+    }
+    .weui-input:-ms-input-placeholder {
+        font-size: 28px;
+    }
+}

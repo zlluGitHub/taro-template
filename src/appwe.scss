@@ -1,0 +1,56 @@
+page{
+    height: 100%;
+}
+page image{
+    display: block;
+}
+
+.at-input__title{
+    width: auto;
+}
+
+.at-button--small {
+    color: #fff;
+    background:linear-gradient(to right,#FD78A2 0%,#F75172 100%);
+    box-shadow: 0px 0px 5px 2px #FD78A2;
+    font-size: 28px;
+    border-radius: 100px !important;
+    margin-top: 65px;
+    margin: 30px 30px;
+    border: 0;
+}
+.at-loading__ring {
+    border-color: #fff transparent transparent transparent;
+
+}
+.at-input {
+    background: transparent;
+}
+
+page .at-modal__content {
+    padding: 0;
+    min-height:auto;
+    max-height: auto;
+}
+
+page .at-modal__footer .at-modal__action > button{
+    font-size: 30px;
+    border-radius: 50px;
+    line-height:normal;
+    background: linear-gradient(to right,#fd78a2 0%,#f75172 100%);
+    margin: 30px 18px;
+}
+page .at-modal__action {
+    margin-bottom: 0;
+}
+page .at-modal__footer {
+    margin: 12px 40px;
+}
+page .at-input {
+    padding: 40px 0;
+
+}
+page .at-modal__header {
+    padding: 30px 24px;
+
+}

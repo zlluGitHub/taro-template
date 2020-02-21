@@ -1,16 +1,20 @@
-.index{
+.indexre{
 
-    background:linear-gradient(to bottom,#fa6c9f 0%,#fff 100%);
+    // background:linear-gradient(to bottom,#fa6c9f 0%,#fff 100%);
     .warp{
+        padding: 20px;
        .content{
            .item{
                 display: flex;
-                margin: 20px 25px;
+                margin: 20px 10px;
                 position: relative;
                 border-radius: 10px;
                 overflow: hidden;
-                background-color: #fff;
+                background-color: rgba(255, 255, 255, 0.9);
                 justify-content: space-between;
+                padding: 2px 5px;
+                // box-shadow: 0 0 6px 2px #fff;
+                color: #333;
                 .flex{
                     display: flex;
                 }
@@ -19,12 +23,13 @@
                     // border-radius: 14px;
                 }
                 .left{
-                    width: 160px;
+                    width: 120px;
                     padding: 10px 0;
                     border-right: 2px solid #eee;
                     display: flex;
-                    flex-direction: column;
+                    justify-content: center;
                     align-items: center;
+
                     .img{
                         width: 75px;
                         height: 70px;
@@ -36,17 +41,20 @@
                     // }
                 }
                 .right{
-                    width: 77%;
-                    padding: 28px 24px;
+                    padding: 18px 18px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin-left: 5px;
                     .ct-title{
                         display: block;
-                        font-size: 30px;
-                        margin-bottom: 16px;
+                        font-size: 32px;
+                        margin-bottom: 8px;
                     }
                     .ct-xq{
                         display: block;
-                        font-size: 22px;
-                        color: #aaa;
+                        font-size: 23px;
+                        color: #999;
                     }
                 }
                 .icon-img{
@@ -63,13 +71,17 @@
                     height: 70px;
                 }
                 .icon-text{
-                    background-color: #fff;
+                    // background-color: #fff;
                     font-size: 32px;
                     display: flex;
                     align-items: center;
                     margin-right: 24px;
+                    .img{
+                        width: 55px;
+                        height: 55px;
+                    }
                     .text{
-                        font-size: 42px;
+                        font-size: 48px;
                         margin-right: 16px;
                         color: #FD5364;
                     }

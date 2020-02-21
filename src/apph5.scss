@@ -1,6 +1,59 @@
 #app .h5-item {
     margin: 18px;
 }
-#app .i-ul {
-    bottom: 130px;
+// #app .i-ul {
+//     bottom: 130px;
+// }
+#app .wish .item{
+    width: 150px;
+    height: 150px;
+}
+
+#app{
+    .at-nav-bar__title{
+        font-size: 30px;
+    }
+}
+#app input,#app textarea,#app .at-input{
+    font-size:32px;
+    // outline:none;
+    // background:transparent; 
+   border-color:transparent;
+   color: #999;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#app{
+    .at-nav-bar{
+        background-color: #FFA9B1;
+    }
+    .at-icon,.at-nav-bar__text,.at-nav-bar__title{
+        color: #fff;
+    }
+}
+.at-modal__content{
+    height:auto;
+    font-size: 40px;
+    padding: 60px 0;
+    opacity: 0.7;
+}
+.at-modal__action{
+    margin-bottom: 40px;
+    .weui-btn{
+        background:linear-gradient(to right,#FD78A2 0%,#F75172 100%);
+        // box-shadow: 0px 0px 10px -3px #FD78A2;
+        font-size: 34px;
+        border-radius: 100px !important;
+        margin-top: 65px;
+        margin: 30px 30px;
+        height:auto;
+    }
+  
+}
+.at-modal__footer .at-modal__action > button{
+    padding: 12px 20px;
+    height:auto;
+    font-size: 28px;
+    // margin: ;
+    line-height:normal;
+    margin-bottom: 20px;
 }

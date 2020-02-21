@@ -1,0 +1,143 @@
+.indextr{
+    background-color: #F7F8FA;
+    .top{
+        position: fixed;
+        top: 190px;
+        left: 0;
+        right: 0;
+        padding: 30px;
+        display: flex;
+        justify-content: space-between;
+        color: #fff;
+        z-index: 10;
+        .touxiang{
+            position: relative;
+            // width: 200px;
+            display: flex;
+            .img{
+                width: 100px;
+                height: 100px;
+                border: 6px solid #fff;
+                border-radius: 100%;
+            }
+            .img-love{
+                position: absolute;
+                width: 60px;
+                height: 60px;
+                bottom: -12px;
+                left: 86px;
+            }
+        }
+        .i-title{
+            margin-left: 10px;
+            align-self: flex-end;
+            font-size: 32px;
+            .i-day{
+                font-size: 42px;
+                font-weight: 600;
+                margin: 0 12px;
+                color: chocolate;
+            }
+        }     
+    }
+    .sw-swiper{
+        .img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .content{
+        padding-top: 60px;
+        color: #666;
+        .ct-item{
+            display: flex;
+            text-align: right;
+            .it-left{
+                position: relative;
+                width: 19%;
+                padding-top: 30px;
+                .it-le-top{
+                    position: absolute;
+                    display: block;
+                    width: 60px;
+                    height: 100px;
+                    background: url('../../static/img/love-3.png') center center no-repeat;
+                    background-size: 100%;
+                    right: -24px;
+                    top: -52px;
+                }
+                .it-le-warp{
+                    margin-right: 36px;
+                    font-size: 20px;
+                    .it-text{
+                        font-size: 30px;
+                        margin-right: 12px;
+                    }
+                }
+                .it-le-icon{
+                    position: absolute;
+                    display: block;
+                    right: -20px;
+                    top: 35px;
+                    padding: 10px;
+                    padding-bottom: 6px;
+                    background-color: #fff;
+                    border-radius: 100%;
+                    border: 3px solid #EBEFF1;
+                    z-index: 5;
+                    .icon-heart{
+                       display: block;
+                      
+                       width: 28px;
+                       height: 28px;
+                    }
+                    .img-1{
+                        background: url('../../static/img/love-1.png') center center no-repeat;
+                        background-size: 100%;
+                    }
+                    .img-2{
+                        background: url('../../static/img/love-2.png') center center no-repeat;
+                        background-size: 100%;
+                    }
+                }
+            }
+            .it-left::after{
+                content: "";
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: 4px;
+                background: #EBEFF1;
+            }
+            .it-right{
+                padding-top: 30px;
+                width: 76%;
+                text-align: left;
+                .it-ri-warp{
+                    margin-left: 32px;
+                    margin-right: 35px;
+                    font-size: 32px;
+                    .it-ri-top{
+                        background: #fff;
+                        padding: 16px 20px;
+                        border-radius: 10px;
+                        border: 2px solid #EBEFF1;
+                    }
+                    .it-ri-bottom{
+                        padding: 16px;
+                        font-size: 20px;
+                        .time{
+                            margin-right: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .sw-swiper{
+        height: 360px;
+    }
+}

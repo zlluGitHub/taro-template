@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Button, Icon } from '@tarojs/components'
-import { AtInput, AtButton, AtTextarea, AtMessage } from 'taro-ui'
-import { post } from '../../service/api'
+import { View, Image, Button, Icon } from '@tarojs/components'
+import { AtInput, AtNavBar, AtTextarea, AtMessage } from 'taro-ui'
+import { post ,URL} from '../../service/api'
 import { getData, setData } from '../../utils/store'
 import './index.scss'
 // import  Default from '../default'
@@ -15,9 +15,9 @@ export default class Index extends Component {
     }
   }
   /************页面配置部分***************/
-  // config = {
-  //   navigationBarTitleText: '首页'
-  // }
+  config = {
+    navigationBarTitleText: '新建相册'
+  }
 
   /************生命周期函数部分***************/
   componentWillMount() {
@@ -41,6 +41,9 @@ export default class Index extends Component {
 
   componentDidHide() {
     this.setState({})
+    Taro.navigateTo({
+      url: '/pages/phono/index'
+    })
   }
 
   /************自定义状态函数部分 ***************/
@@ -77,6 +80,7 @@ export default class Index extends Component {
         title: this.state.title,
         content: this.state.content,
         author: user.name,
+        loveCode: getData('user').login.loveCode,
         url: user.url
       }
       post('/zll/love/photo/add', data).then((e) => {
@@ -84,7 +88,7 @@ export default class Index extends Component {
           setData('bid', e.data.bid)
           // 跳转到目的页面，打开新页面
           Taro.navigateTo({
-            url: `/pages/photoEdit/index`
+            url: `/pages/photo/index`
           })
         } else {
           Taro.atMessage({
@@ -97,12 +101,30 @@ export default class Index extends Component {
       })
     }
   }
+  beforePage() {
+    Taro.navigateBack({
+      delta: 1 // 返回上一级页面。
+    });
+  }
   /************视图部分***************/
   render() {
+    let navBar = null
+    if (Taro.getEnv() == Taro.ENV_TYPE.WEB) {
+      navBar = <AtNavBar
+        onClickRgIconSt={this.beforePage.bind(this)}
+        onClickRgIconNd={this.beforePage.bind(this)}
+        onClickLeftIcon={this.beforePage.bind(this)}
+        color='#000'
+        leftText='返回'
+        leftIconType='chevron-left'
+      >
+        <View>新建相册</View>
+      </AtNavBar>
+    }
     return (
       <View className='index'>
-        <View className='warp'>
-
+        {navBar}
+        <View className='warp3'>
           <View className='name border'>
             <AtInput
               type='text'
@@ -134,6 +156,7 @@ export default class Index extends Component {
         <AtMessage />
         {/* 背景 */}
         {/* <Image className="bg" src={require('../../static/img/bgc.jpg')}></Image> */}
+        <Image className="bg" src={getData("bgcData") ? URL + getData("bgcData")[13].src : URL + '/love/bgc/bgc4.jpg'}></Image>
       </View>
     )
   }

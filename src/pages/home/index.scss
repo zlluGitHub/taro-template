@@ -1,4 +1,4 @@
-.index{
+.indexa{
     // position: fixed;
     // height: 100%;
     // width: 100%;
@@ -7,7 +7,7 @@
     // font-family:Georgia; font-family:Arial;
 
     .top{
-        padding: 40px;
+        padding: 70px 40px;
         display: flex;
         color: #fff;
         .touxiang{
@@ -15,38 +15,56 @@
             // width: 200px;
             display: flex;
             .img{
-                width: 100px;
-                height: 100px;
+                width: 90px;
+                height: 90px;
                 border: 6px solid #fff;
                 border-radius: 100%;
                 box-shadow: 3px 3px 30px #888;
+                position: relative;
             }
             .img-love{
                 position: absolute;
                 width: 60px;
                 height: 60px;
                 bottom: -20px;
-                left: 82px;
+                left: 70px;
+                z-index: 5;
             }
         }
         .i-title{
-            margin-left: 20px;
+            position: relative;
+            margin-left: 30px;
+            background: rgba(254, 100, 139, 0.5);
+            padding: 8px 12px;
+            border-radius: 12px;
             .title-top{
-                font-size: 32px;
+                font-size: 30px;
                 margin-bottom: 4px;
-                margin-top: 12px;
             }
             .title-bottom{
-                font-size: 22px;
+                font-size: 18px;
             }
+        }
+        .i-title::after {
+            content: '';
+            position: absolute;
+            left: -14px;
+            top: 32px;
+            width:0;
+            height:0;
+            border-top:15px solid transparent;
+            border-bottom:15px solid transparent;
+            border-right:16px solid rgba(254, 100, 139, 0.5);
         }
         .i-day{
             font-size: 30px;
             font-weight: 600;
             margin: 0 12px;
             color: #F98C9F;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 0 10px;
+            border-radius: 6px;
         }
-      
     }
     .bg{
         position: absolute;
@@ -54,7 +72,6 @@
         bottom: 0;
         right: 0;
         left: 0;
-        height: 100%;
         width: 100%;
         z-index: -1;
     }
@@ -64,12 +81,11 @@
         bottom: 0;
         right: 0;
         left: 0;
-        height: 100%;
         width: 100%;
         z-index: 0;
         display: flex;
         justify-content: center;
-        margin-top: 350px;
+        margin-top: 280px;
         .img{
             height: 230px;
             width: 230px;
@@ -125,22 +141,16 @@
                 display: block;
                 width: 80px;
                 height: 80px;
-                background: url('../../static/img/xc.png') center center no-repeat;
-                background-size: 100%;
             }
-            .ic-list{
+            .ic-list12{
                 display: block;
                 width: 80px;
                 height: 80px;
-                background: url('../../static/img/ywd1.png') center center no-repeat;
-                background-size: 100%;
             }
-            .ic-day{
+            .ic-day12{
                 display: block;
                 width: 80px;
                 height: 80px;
-                background: url('../../static/img/jnr.png') center center no-repeat;
-                background-size: 100%;
             }
             .center-text{
                 margin-top: 20px;
@@ -154,4 +164,8 @@
             background:linear-gradient(to top,#F37252,#FFA260);
         }
     }
+}
+
+page .img-love {
+    top: 50px;
 }

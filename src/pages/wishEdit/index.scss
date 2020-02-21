@@ -7,30 +7,63 @@
             font-weight: 600;
         }
         .content{ 
+            width: 100%;
             display: flex;
             justify-content: center;
             .img-box{
                 border-radius: 8px;
-                background-color: #fff;
+                background-color: rgba(255, 255, 255, 0.9);
+                position: relative;
                 .img{
                     margin: 20px;
                     width: 550px;
                     height: 600px;
+                    // background-color: #aaa;
+                }
+                .icon-box{
+                    position: absolute;
+                    top: 30px;
+                    right: 30px;
+                    display: flex;
+                    box-shadow: 0 0 12px 6px #666;
+                    // .delete{
+                    //     background-color: #999;
+                    //     padding: 12px;
+                    //     border-radius: 100%;
+                    //     margin-right: 20px;
+                    //    .icon{
+                    //         width: 30px;
+                    //         height: 30px;
+                    //         background: url('../../static//img/delete.png') center center no-repeat;
+                    //         background-size: cover;
+                    //     }
+                    // }
+                    // .look{
+                    //     background-color: #999;
+                    //     padding: 12px;
+                    //     border-radius: 100%;
+                    //     .icon{
+                    //         width: 35px;
+                    //         height: 35px;
+                    //         background: url('../../static//img/delete.png') center center no-repeat;
+                    //         background-size: cover;
+                    //     }
+                      
+                    // }
                 }
             }
         }
         .title{
             text-align: center;
             font-size: 35px;
-            background-color: #fff;
-            padding-bottom: 45px;
+            background-color: rgba(255, 255, 255, 0.514);
+            border-top: 2px solid rgb(255, 255, 255);
         }
         .time{
             font-size: 30px;
             text-align: center;
             padding: 20px;
-            background-color: #eee;
+            background-color: rgba(238, 238, 238, 0.9);
         }
-    }
-   
+    }   
 }

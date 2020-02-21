@@ -2,7 +2,7 @@
 	"miniprogramRoot": "dist/",
 	"projectname": "taro-template",
 	"description": "",
-	"appid": "touristappid",
+	"appid": "wx9e4ef83d6ecd09d5",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
@@ -10,7 +10,7 @@
 		"minified": false
 	},
 	"compileType": "miniprogram",
-	"simulatorType": "wechat",
+	"simulatorType": "爱的小窝",
 	"simulatorPluginLibVersion": {},
 	"condition": {}
 }

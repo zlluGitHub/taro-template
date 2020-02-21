@@ -1,6 +1,8 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Image, Icon } from '@tarojs/components'
-import { AtTabs, AtTabsPane, AtModal, AtModalHeader, AtInput, AtModalAction } from 'taro-ui'
+import { View, Text, Image, Icon, ScrollView } from '@tarojs/components'
+import { AtActionSheet, AtActionSheetItem, AtNavBar, AtModal, AtMessage } from 'taro-ui'
+import { post, get, URL } from '../../service/api'
+import { getData, setData } from '../../utils/store'
 import './index.scss'
 // import  Default from '../default'
 export default class Index extends Component {
@@ -8,16 +10,18 @@ export default class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: [],
       isOpened: false,
+      isDelete: false,
       current: 0,
-      tabList: [{ title: '全部' }, { title: '未完成' }, { title: '已完成' }],
-      color: ['#FF7066', '#748F9D', '#67B867', '#599DF1', '#6B7BF4', '#AB96EF', '#AB96EF', '#F98296', '#DC7FB8']
+      // tabList: [{ title: '全部' }, { title: '未完成' }, { title: '已完成' }],
+      // color: ['#FF7066', '#748F9D', '#67B867', '#599DF1', '#6B7BF4', '#AB96EF', '#AB96EF', '#F98296', '#DC7FB8']
     }
   }
   /************页面配置部分***************/
-  // config = {
-  //   navigationBarTitleText: '首页'
-  // }
+  config = {
+    navigationBarTitleText: '纪念日'
+  }
 
   /************生命周期函数部分***************/
   componentWillMount() {
@@ -27,8 +31,6 @@ export default class Index extends Component {
 
   componentDidMount() {
 
-
-    console.log('componentDidMount');
   }
 
   componentWillUnmount() {
@@ -36,7 +38,8 @@ export default class Index extends Component {
   }
 
   componentDidShow() {
-    console.log('componentDidShow');
+    setData('remData', '')
+    this.getData()
   }
 
   componentDidHide() {
@@ -44,119 +47,193 @@ export default class Index extends Component {
   }
 
   /************自定义状态函数部分 ***************/
-  handleClick(value) {
-    this.setState({
-      current: value
+  getData() {
+    setData('bid', '')
+    setData('remData', '')
+    get('/zll/love/remember/get', { loveCode: getData('user').login.loveCode }).then(e => {
+      if (e.data.result) {
+        let data = e.data.list.map(item => {
+          if (item.startTime) {
+            let arr = item.startTime.slice(0, 10).split('-')
+            let timeSt = arr[0] + '-' + arr[1] + '-' + arr[2]
+            item.startTime = arr[0] + '年' + arr[1] + '月' + arr[2] + '日'
+            let time = Date.parse(new Date());
+            let lasttime = Date.parse(timeSt);
+            let day = parseInt((time - lasttime) / (1000 * 60 * 60 * 24))
+            item.day = day.toString().indexOf('-') >= -1 ? day.toString().replace('-', "") : day
+          } else {
+            item.day = ''
+          }
+          return item
+        })
+        this.setState({ data, isOpened: false, isDelete: false })
+      } else {
+        Taro.atMessage({
+          message: '数据加载失败！',
+          type: 'error',
+        })
+      }
+    }).catch(e => {
+      console.log(e);
     })
   }
-  handleAddClick(key, e) {
-    let _this = this;
+  handleClick(key) {
+    let _this = this
     switch (key) {
-      case 'open':
-        _this.setState({ isOpened: true })
+      case 'bianji':
+        _this.handleCancel()
+        Taro.navigateTo({
+          url: '/pages/rememberEdit/index'
+        })
         break;
-      case 'close':
-        _this.setState({ isOpened: false })
+      case 'delete':
+        _this.setState({ isDelete: true, isOpened: false })
         break;
+
       default:
         break;
     }
+
   }
-  handleRouter() {
-    Taro.navigateTo({
-      url: '/pages/rememberEdit/index'
-    })
+  handleClose() {
+    this.setState({ isDelete: false })
+  }
+  handleConfirm() {
+    if (getData('remData').is === '1') {
+      post('/zll/love/remember/delete', { idArr: JSON.stringify([getData('remData').bid]) }).then(e => {
+        if (e.data.result) {
+          this.getData()
+        } else {
+          Taro.atMessage({
+            message: '数据删除失败！',
+            type: 'error',
+          })
+        }
+      }).catch((e) => {
+        console.log(e);
+      })
+    } else {
+      this.handleClose()
+      Taro.atMessage({
+        message: '此项不允许删除！',
+        type: 'error',
+      })
+    }
+
+  }
+  handleCancel() {
+    this.setState({ isOpened: false })
+  }
+  handleRouter(val) {
+    setData('remData', val)
+    if (val) {
+      this.setState({ isOpened: true })
+    } else {
+      Taro.navigateTo({
+        url: '/pages/rememberEdit/index'
+      })
+    }
+  }
+  handleRouterSort(val) {
+    setData('remData', val)
+    if (val.startTime) {
+      Taro.navigateTo({
+        url: '/pages/rememberShow/index'
+      })
+    } else {
+      Taro.navigateTo({
+        url: '/pages/rememberEdit/index'
+      })
+    }
+
+  }
+  beforePage() {
+    Taro.navigateBack({
+      delta: 1 // 返回上一级页面。
+    });
   }
 
   /************视图部分***************/
   render() {
-    const tabList = this.state.tabList;
-    const color = this.state.color;
-    return (
-      <View className='index'>
-        <View className='warp'>
-          {/* <AtTabs current={this.state.current} tabList={tabList} onClick={this.handleClick.bind(this)}>
-            <AtTabsPane current={this.state.current} index={0} > */}
-          <View className='content'>
-            <View className='item' onClick={this.handleRouter.bind(this)}>
-              <View className='flex'>
-                <Icon className='icon' style={'background-color:' + color[1] + ';'}></Icon>
-                <View className='left'>
-                  <Image className='img' src={require('../../static/img/love2.png')}></Image>
-                </View>
-                <View className='right'>
-                  <Text className='ct-title'>我们在一起已经</Text>
-                  <Text className='ct-xq'>2019年7月11日</Text>
-                </View>
-              </View>
-              <View className='icon-text'>
-                <Text className='text'>200</Text> 天
-              </View>
-            </View>
-            <View className='item' onClick={this.handleAddClick.bind(this, 'open')}>
-              <Icon className='icon' style={'background-color:' + color[2] + ';'}></Icon>
-              <View className='left'>
-                <Image className='img' src={require('../../static/img/sr1.png')}></Image>
-              </View>
-              <View className='right'>
-                <Text className='ct-title'>Ta的生日还有</Text>
-                <Text className='ct-xq'>2019年7月11日</Text>
-              </View>
-              <Image className='icon-img dwc' src={require('../../static/img/sr2.png')}></Image>
-            </View>
-            <View className='item'>
-              <Icon className='icon' style={'background-color:' + color[3] + ';'}></Icon>
-              <View className='left'>
-                <Image className='img' src={require('../../static/img/sr2.png')}></Image>
-              </View>
-              <View className='right'>
-                <Text className='ct-title'>Ta的生日还有</Text>
-                <Text className='ct-xq'>2019年7月11日</Text>
-              </View>
-            </View>
-            <View className='item'>
-              <Icon className='icon' style={'background-color:' + color[3] + ';'}></Icon>
-              <View className='left'>
-                <Image className='img' src={require('../../static/img/lx.png')}></Image>
-              </View>
-              <View className='right'>
-                <Text className='ct-title'>第一次携手旅行</Text>
-                <Text className='ct-xq'>2019年7月11日</Text>
-              </View>
-            </View>
-            <View className='item'>
-              <Icon className='icon' style={'background-color:' + color[3] + ';'}></Icon>
-              <View className='left'>
-                <Image className='img' src={require('../../static/img/jh.png')}></Image>
-              </View>
-
-              <View className='right'>
-                <Text className='ct-title'>结婚纪念日</Text>
-                <Text className='ct-xq'>2019年7月11日</Text>
-              </View>
-            </View>
+    let content = this.state.data.map(item => {
+      return <View className='item' onLongPress={this.handleRouter.bind(this, item)} onClick={this.handleRouterSort.bind(this, item)}>
+        <View className='flex'>
+          <View className='left'>
+            <Image className='img' src={URL + item.src}></Image>
           </View>
+          <View className='right'>
+            <Text className='ct-title'>{item.title}</Text>
+            {item.startTime !== '' ? <Text className='ct-xq'>{item.startTime}</Text> : ''}
+          </View>
+        </View>
+        {item.day ? <View className='icon-text'><Text className='text'>{item.day}</Text>天</View> : <View className='icon-text'> <Image className='img' src={require('../../static/img/add1.png')}></Image> </View>}
+      </View>
+    })
+    const scrollStyle = {
+      height: getData('winHeight') - 75 + 'px'
+    }
 
+    let navBar = null
+    if (Taro.getEnv() == Taro.ENV_TYPE.WEB) {
+      navBar = <AtNavBar
+        onClickRgIconSt={this.beforePage.bind(this)}
+        onClickRgIconNd={this.beforePage.bind(this)}
+        onClickLeftIcon={this.beforePage.bind(this)}
+        color='#000'
+        leftText='返回'
+        leftIconType='chevron-left'
+      >
+        <View>纪念日列表</View>
+      </AtNavBar>
+    }
+    return (
+      <View className='indexre'>
+        {navBar}
+        <View className='warp'>
+          <ScrollView
+            className='scrollview'
+            scrollY
+            scrollWithAnimation
+            scrollTop={0}
+            style={scrollStyle}
+            lowerThreshold={20}
+            upperThreshold={20}
+          >
+            <View className='content'>
+              {content}
+            </View>
+          </ScrollView>
         </View>
 
-        {/* 添加输入框 */}
-        {/* <AtModal isOpened={this.state.isOpened}>
-          <View className='modal-input'>
-            是否已完成？
-          </View>
-          <AtModalAction>
-            <Button onClick={this.handleAddClick.bind(this, 'close')}>取消</Button>
-            <Button>编辑</Button>
-            <Button>已完成</Button>
-          </AtModalAction>
-        </AtModal> */}
-
+        {/* 动作面板 */}
+        <AtActionSheet isOpened={this.state.isOpened} cancelText='关闭' onCancel={this.handleCancel.bind(this)} onClose={this.handleCancel.bind(this)}>
+          <AtActionSheetItem onClick={this.handleClick.bind(this, 'bianji')}>
+            编辑
+          </AtActionSheetItem>
+          <AtActionSheetItem onClick={this.handleClick.bind(this, 'delete')}>
+            删除
+          </AtActionSheetItem>
+        </AtActionSheet>
+        {/* 删除提示框 */}
+        <AtModal
+          isOpened={this.state.isDelete}
+          title='删除提示'
+          cancelText='取消'
+          confirmText='确定'
+          onClose={this.handleClose.bind(this)}
+          onCancel={this.handleClose.bind(this)}
+          onConfirm={this.handleConfirm.bind(this)}
+          content='确定删除？'
+        />
         {/* 新建按钮 */}
-        {/* <View className='menu'>
-          <View className='warp-me'>
+        <View className='menu'>
+          <View className='warp-me' onClick={this.handleRouter.bind(this, '')}>
             <Icon className='icon-add'></Icon>
           </View>
-        </View> */}
+        </View>
+        <AtMessage />
+        <Image className="bg" src={getData("bgcData") ? URL + getData("bgcData")[6].src : URL + '/love/bgc/bgc6.jpg'}></Image>
+        {/* <Image className="bg" src={URL + '/' + 'love/bgc/bgc6.jpg'}></Image> */}
       </View>
     )
   }

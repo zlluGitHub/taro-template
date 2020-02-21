@@ -1,4 +1,4 @@
-.index{
+.index1{
     // .sw-swiper{
     //     padding: 40px;
     // }
@@ -15,7 +15,7 @@
             top: 0;
             bottom: 0;
             z-index: 2;
-            filter: blur(5px);
+            filter: blur(3px);
             border: 2px solid #eee;
         }
         // .icon::after{
@@ -28,13 +28,25 @@
         //     right: 0;
         //     z-index: -1;
         // }
-      
+        
         .title{
             top: 0;
             z-index: 5;
             font-size: 40px;
             text-align: center;
             padding: 50px;
+         
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+        }
+        .text{
+            color: #fff;
+            // background-color: rgba(0, 0, 0, 0.3);
+            background: rgba(254, 100, 139, 0.5);
+            padding: 10px 20px;
+            border-radius: 8px;
         }
         .content{
             bottom: 0;
@@ -42,6 +54,12 @@
             font-size: 28px;
             text-align: center;
             padding: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .text{
+                padding: 20px 40px;
+            }
         }
     }
     .warp{
@@ -52,10 +70,14 @@
             margin: 20px;
             margin-bottom: 10px;
             .img{
+                position: static;
                 width: 320px;
                 height: 230px;
                 border-radius: 8px;
             }
         }
+    }
+    .at-modal__action{
+        margin-bottom: 30px;
     }
 }

@@ -3,7 +3,29 @@
  * 全局变量
  */
 const globalData = {
-    user: {name:'zll',url:'http://zhenglinglu.cn/_nuxt/img/ff5a451.jpg'}
+    user: {
+        login: {
+            author: "香香",
+            bid: "1314",
+            loveCode: "5201314",
+            name: "我",
+            password: "5201314",
+            "describe": "俺不也多发，问我非常",
+            time: "2020-02-15 13:14:02",
+            url: "http://localhost:3000/love/users/nan.png"
+        },
+        partner: {
+            "author": "韦茹月",
+            "url": "http://localhost:3000/love/users/nv.png",
+            "name": "宝贝",
+            "password": "5201314",
+            "loveCode": "5201314",
+            "describe": "俺不也多发，问我非常",
+            "time": "2020-02-15 13:14:02",
+            "bid": "520"
+        },
+        startTime:'2019-07-14'
+    }
 }
 export const setData = (key, val) => {
     globalData[key] = val
